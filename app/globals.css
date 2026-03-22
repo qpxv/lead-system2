@@ -1,0 +1,147 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* ─── macOS Tahoe — Light ────────────────────────────────────────────────────
+   Using exact hex so there's no oklch→hex conversion surprise.             */
+
+[data-theme="light"] {
+  --color-base-100:     #f2f2f7;   /* macOS system background  */
+  --color-base-200:     #ffffff;   /* cards / surfaces         */
+  --color-base-300:     #e5e5ea;   /* inputs / dividers        */
+  --color-base-content: #1c1c1e;
+  --color-primary:      #007aff;   /* Apple Blue               */
+  --color-primary-content: #ffffff;
+  --color-secondary:    #5856d6;   /* Apple Indigo             */
+  --color-secondary-content: #ffffff;
+  --color-success:      #34c759;   /* Apple Green              */
+  --color-success-content: #ffffff;
+  --color-error:        #ff3b30;   /* Apple Red                */
+  --color-error-content: #ffffff;
+  --color-neutral:      #8e8e93;
+  --color-neutral-content: #ffffff;
+  --radius-box:         0.875rem;
+  --radius-field:       0.5rem;
+  --radius-selector:    0.5rem;
+  --depth: 1;
+  --noise: 0;
+}
+
+/* ─── macOS Tahoe — Dark ─────────────────────────────────────────────────── */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-base-100:     #1c1c1e;   /* macOS dark background    */
+  --color-base-200:     #2c2c2e;   /* cards / surfaces         */
+  --color-base-300:     #3a3a3c;   /* inputs / dividers        */
+  --color-base-content: #f4f4f5;
+  --color-primary:      #0a84ff;   /* Apple Blue (dark)        */
+  --color-primary-content: #ffffff;
+  --color-secondary:    #5e5ce6;   /* Apple Indigo (dark)      */
+  --color-secondary-content: #ffffff;
+  --color-success:      #30d158;   /* Apple Green (dark)       */
+  --color-success-content: #ffffff;
+  --color-error:        #ff453a;   /* Apple Red (dark)         */
+  --color-error-content: #ffffff;
+  --color-neutral:      #48484a;
+  --color-neutral-content: #e5e5ea;
+  --radius-box:         0.875rem;
+  --radius-field:       0.5rem;
+  --radius-selector:    0.5rem;
+  --depth: 1;
+  --noise: 0;
+}
+
+/* ─── Day accent colours — Light ─────────────────────────────────────────── */
+
+[data-theme="light"] {
+  --day1: #1a70e0; --day1-a: rgba(26,112,224,0.08);
+  --day2: #6f35ce; --day2-a: rgba(111,53,206,0.08);
+  --day3: #d95d12; --day3-a: rgba(217,93,18,0.08);
+  --day4: #636366; --day4-a: rgba(99,99,102,0.07);
+  --day5: #d70015; --day5-a: rgba(215,0,21,0.08);
+}
+
+/* ─── Day accent colours — Dark ──────────────────────────────────────────── */
+
+[data-theme="dark"] {
+  --day1: #4da3ff; --day1-a: rgba(77,163,255,0.1);
+  --day2: #bf5af2; --day2-a: rgba(191,90,242,0.1);
+  --day3: #ff9f0a; --day3-a: rgba(255,159,10,0.1);
+  --day4: #8e8e93; --day4-a: rgba(142,142,147,0.09);
+  --day5: #ff453a; --day5-a: rgba(255,69,58,0.1);
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+
+html { height: 100%; }
+
+body {
+  min-height: 100%;
+  background-color: var(--color-base-100);
+  color: var(--color-base-content);
+  font-family: var(--font-geist), -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Frosted glass nav ──────────────────────────────────────────────────── */
+
+.glass-nav {
+  background: color-mix(in srgb, var(--color-base-100) 82%, transparent);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-base-content) 8%, transparent);
+}
+
+/* ─── Day group card ─────────────────────────────────────────────────────── */
+
+.day-card {
+  border-left: 3px solid var(--dc);
+}
+
+.day-head-bg {
+  background: var(--da);
+  transition: background 0.12s;
+}
+
+.day-head-bg:hover {
+  background: color-mix(in srgb, var(--dc) 14%, transparent);
+}
+
+/* ─── Open All button ────────────────────────────────────────────────────── */
+
+.open-all-btn {
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--dc);
+  color: var(--dc);
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: all 0.12s;
+  white-space: nowrap;
+}
+
+.open-all-btn:hover { opacity: 1; background: var(--da); }
+.open-all-btn:active { transform: scale(0.95); }
+
+/* ─── Lead row hover ─────────────────────────────────────────────────────── */
+
+.lead-row {
+  border-radius: 9px;
+  transition: background 0.1s;
+  border: 1px solid transparent;
+}
+
+.lead-row:hover {
+  background: color-mix(in srgb, var(--color-base-300) 55%, transparent);
+  border-color: color-mix(in srgb, var(--color-base-content) 6%, transparent);
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-base-300); border-radius: 99px; }
